@@ -5,6 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Odinverse - sign up or log in</title>
+		<script src="script.js" defer></script>
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
@@ -21,15 +22,15 @@
 					<p>Join today to get started.</p>
 					<section class="user-input">
 						<div class="input-container">
-							<label class="required-field" for="first-name">FIRST NAME</label>
-							<input type="text" id="first-name" name="first-name" minlength="1" maxlength="22" required>
+							<label for="first-name">FIRST NAME<abbr title="Required" aria-label="Required">*</abbr></label>
+							<input type="text" id="first-name" name="first-name" minlength="1" maxlength="22" required required="">
 						</div>
 						<div class="input-container">
-							<label class="required-field" for="last-name">LAST NAME</label>
+							<label for="last-name">LAST NAME<abbr title="Required" aria-label="Required">*</abbr></label>
 							<input type="text" id="last-name" name="last-name" maxlength="22" required>
 						</div>
 						<div class="input-container">
-							<label class="required-field" for="user-email">EMAIL ADDRESS</label>
+							<label for="user-email">EMAIL ADDRESS<abbr title="Required" aria-label="Required">*</abbr></label>
 							<input type="email" id="user-email" name="email" placeholder="you@example.com" pattern=".+\.com$" title="Please enter a valid email, example: you@example.com" required>
 						</div>
 						<div class="input-container">
@@ -37,12 +38,14 @@
 							<input type="tel" id="phone" name="phone-number">
 						</div>
 						<div class="input-container">
-							<label class="required-field" for="password">PASSWORD</label>
-							<input type="password" id="password" name="password" required>
+							<label for="password">PASSWORD<abbr title="Required" aria-label="Required">*</abbr></label>
+							<input type="password" id="password" name="password" class="error" required>
+							<span></span>
 						</div>
 						<div class="input-container">
-							<label class="required-field" for="confirm-password">CONFIRM PASSWORD</label>
-							<input type="password" id="confirm-password" name="confirm-password" required>
+							<label for="confirm-password">CONFIRM PASSWORD<abbr title="Required" aria-label="Required">*</abbr></label>
+							<input type="password" id="confirm-password" name="confirm-password" class="error" required>
+							<span></span>
 						</div>
 						<small class="terms">By signing up, you agree to the <a href="#">Terms of Service</a>
 							and <a href="#">Privacy Policy</a></small> 
@@ -52,7 +55,7 @@
 					<div class="button-class">
 						<button type="submit" form="signup-info">Create Account</button>
 					</div>
-						<small> Already have an account? <a href="#">Log in</a></small>
+						<small> Already have an account? <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Log in</a></small>
 				</div>
 			</div>
 		</div>

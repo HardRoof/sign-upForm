@@ -1,5 +1,6 @@
 @import url(/normalize.css);
 
+/* Import external font */
 @font-face {
   font-family: futuristic;
   src: url(fonts/StickNoBills-VariableFont_wght.ttf);
@@ -7,7 +8,6 @@
 
 :root {
   font-size: 62.5%; /* Turns 1rem equal 10px */
-  box-sizing: border-box;
   --bg-color:rgb(247, 248, 251);
   --text-color:rgb(118, 126, 137);
   --btn-color:rgba(98, 169, 157, 0.701);
@@ -23,8 +23,8 @@ body {
 
 .content {
   display: grid;
-  max-width: 1300px;
-  grid-template-columns: 40vw auto; /* Creates two columns with respective values */
+  max-width: 1500px; /* This creates a desired right margin */
+  grid-template-columns: 42% auto; /* Creates two columns with respective values */
   height: 100vh;
 }
 
@@ -43,12 +43,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--bg-color, whitesmoke)
-}
-
-form {
-  margin-bottom: 5vh;
-  padding-left: 2rem;
+  background-color: var(--bg-color, whitesmoke);
+  padding-left: 5rem;
 }
 
 header{
@@ -56,7 +52,7 @@ header{
   display: flex;
   flex-direction: column;
   font-weight: 600;
-  padding: 0 2rem 0 2rem;
+  padding-right: 2rem;
   justify-content: center;
 }
 
@@ -66,9 +62,18 @@ header{
   color: var(--btn-color);
 }
 
+form {
+  margin-bottom: 5vh;
+}
+
 p {
   margin: 0 0 2rem 0;
   font-weight: 600;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
 }
 
 .input-container{
@@ -79,6 +84,7 @@ p {
   align-self: center;
 }
 
+/* Applies top margin in all input-container, starting from the third */
 .input-container:nth-child(n + 3) label{
   margin-top: 2rem;
 }
@@ -92,34 +98,27 @@ input {
   color: var(--text-color);
 }
 
-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+.terms {
+  grid-column-start: 2;
+  width : 75%;
+  margin-top: 1.1rem;
+  line-height: 1.1rem;
+  font-size: 1rem;
 }
 
-.bottom-part {
-  padding-left: 2rem;
+abbr {
+  text-decoration: none !important; /* !important to force property to override normalize.css */
 }
 
 button {
   font-size: 1.6rem;
-  padding: 0.5em 2.4em;
+  padding: 0.5em 2.2em;
   border: solid 1px;
   border-radius: 6px;
   border: none;
   background-color: rgba(98, 169, 157, 0.701);
-}
-
-a {
-  text-decoration: none;
-}
-
-.terms {
-  grid-column-start: 2;
-  width : 75%;
-  margin-top: 0.7rem;
-  line-height: 1.1rem;
-  font-size: 1rem;
+  font-family: futuristic;
+  letter-spacing: 0.13rem;
 }
 
 .bottom-part small {
@@ -127,7 +126,12 @@ a {
   font-size: 1.2rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 .logo-img-container {
+  display: flex;
   position: absolute;
   z-index: 3;
   width: 100%;
@@ -135,10 +139,10 @@ a {
   background-color: rgba(155, 189, 184, 0.277);
   text-transform: uppercase;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.148);
-  display: flex;
   justify-content: center;
 }
 
+/* max() sets the odin logo with either 16% or 60 px, whichever is largest */
 .logo-img-container > img{
   width: max(16%, 60px);
 }
@@ -153,6 +157,7 @@ a {
 
 /* CSS pseudo-classes */
 button:hover {
+  transition: 0.1s;
   background-color: rgba(49, 152, 135, 0.617);
   box-shadow: 2px 1px 5px rgba(49, 152, 135, 0.617);
 }
@@ -161,7 +166,15 @@ input:focus {
   outline: solid 1px var(--btn-color);
 }
 
-/* CSS element */
-.required-field::after {
-  content: "*";
+#confirm-password:focus {
+  outline: 1px solid red;
+}
+
+/* CSS pseudo-element */
+#confirm-password:focus + span::before {
+  content: "✖ Error. Try pressing log in";
+  font-size: 0.8rem;
+  color: red;
+  position: absolute;
+  margin-top: 1px;
 }
